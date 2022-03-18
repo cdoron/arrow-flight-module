@@ -12,10 +12,8 @@ class Config:
             self.values = yaml.safe_load(stream)
 
     def for_asset(self, asset_name: str, capability="") -> dict:
-        if capability == 'transform':
-            capability = 'read'
         for asset_info in self.values.get('data', []):
-            if asset_info['name'] == asset_name and (capability == "" or asset_info['capability'] == capability):
+            if asset_info['name'] == asset_name and (capability == "" or asset_info['capability'] == capability or asset_info['capability'] == 'transform'):
                 return asset_info
         raise ValueError(
             "Requested config for undefined asset: {}".format(asset_name))
