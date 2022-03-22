@@ -41,9 +41,9 @@ data:
     transformations:
     {{- $redactColumns := list -}}
     {{- $removeColumns := list -}}
-    {{- $query := list -}}
+    {{- $query := "" -}}
     {{- $ageFilterColumns := list -}}
-    {{- $age := list -}}
+    {{- $age := 0 -}}
     {{- range .transformations -}}
       {{- if eq .name "RedactAction" -}}
         {{- $redactColumns = .RedactAction.columns -}}
